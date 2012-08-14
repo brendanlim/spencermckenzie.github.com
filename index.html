@@ -8,11 +8,12 @@
 		<div id='video-back' style='width: 100%; height: 100%;'></div>
 		<script type='text/javascript'>
 			var randomInt = Math.floor((Math.random()*2)+1);
-			var videoFile = randomInt > 1 ? "spencer-sleeping.mp4" : "spencer.mp4";
+			var videoFile = randomInt > 1 ? "spencer-sleeping" : "spencer";
 			$('body').videoBG({
-				mp4: videoFile,
-				ogv: videoFile,
-				webm: videoFile,
+				mp4: videoFile + ".mp4",
+				ogv: videoFile + ".mp4",
+				webm: videoFile + ".mp4",
+				poster: videoFile + ".png",
 				opacity:1.0,
 				autoplay:true,
 				scale:false,
