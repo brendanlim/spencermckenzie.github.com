@@ -33,7 +33,6 @@
 		}
 	</style>
 	<body>
-		<div id='subtitle'>&larr; Previous / &rarr; Next</div>
 		<script type='text/javascript'>
 			var videoFiles = [
 				{"file": "spencer-sleeping-la", "title": "Sleeping in LA" },
@@ -71,7 +70,10 @@
 				if($("div#title").length)
 					$("div#title").remove();
 
-				$("body").prepend("<div id='title'></div>");
+				if($("div#subtitle").length)
+					$("div#subtitle").remove();
+
+				$("body").prepend("<div id='title'></div>").append("<div id='subtitle'>&larr; Previous / &rarr; Next</div>");
 
 				$("div#title").html(title);
 				$('body').videoBG({
