@@ -41,6 +41,7 @@
 			var videoFile = "/videos/" + fileName + ".mp4";
 			var posterFile = "/videos/" + fileName + ".jpg";
 
+			$("div#title").html(title);
 			$('body').videoBG({
 				mp4: videoFile,
 				ogv: videoFile,
@@ -53,7 +54,6 @@
 				height:'100%'
 			});
 
-			$("div#title").html(title);
 		</script>
 	</body>
 </html>
