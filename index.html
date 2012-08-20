@@ -1,7 +1,7 @@
 <html>
 	<head>
 		<script type="text/javascript" src="http://syddev.com/jquery.videoBG/assets/jquery-1.5.1.js"></script>
-		<script type="text/javascript" src="jquery.videoBG.js"></script>
+		<script type="text/javascript" src="jquery.videobackground.js"></script>
 	</head>
 	<style type="text/css">
 		body {
@@ -26,34 +26,75 @@
 		<div id='title'></div>
 
 		<script type='text/javascript'>
-			var videoFiles = [
-				{"file": "spencer-sleeping-la", "title": "Sleeping in LA" },
-				{"file": "spencer-sleeping-santa-monica", "title": "Sleeping in Santa Monica" },
-				{"file": "sleeping-mv-08-20-2012", "title": "Sleeping in Mountain View"},
-				{"file": "sleeping-vegas-08-19-2012", "title": "Sleeping in Vegas on Aug. 20 2012"},
-				{"file": "sleeping-vegas-desert-08-19-2012", "title": "Sleeping to the Desert on Aug. 20 2012"},
-			];
-			
-			var randomInt = Math.floor((Math.random()*videoFiles.length));
-			var videoItem = videoFiles[randomInt];
-			var title = videoItem['title'];
-			var fileName = videoItem['file'];
-			var videoFile = "/videos/" + fileName + ".mp4";
-			var posterFile = "/videos/" + fileName + ".jpg";
-
-			$("div#title").html(title);
-			$('body').videoBG({
-				mp4: videoFile,
-				ogv: videoFile,
-				webm: videoFile,
-				poster: posterFile,
-				opacity: 1.0,
-				autoplay: true,
-				scale: false,
-				width: '100%',
-				height:'100%'
+			$(document).keydown(function(e){
+			    if (e.keyCode == 37) { // left
+			       	previousVideo(randomInt);
+			       	return false;
+			    } else if (e.keyCode == 39) {
+			    	nextVideo(randomInt);
+			    	return false;
+			    }
 			});
 
+			function playVideoWithPosition(position) {
+				var title = videoTitleFromPosition(position);
+				var videoFile = videoFileFromPosition(position);
+				var posterFile = posterFileFromPosition(position);
+
+				$("div#title").html(title);
+				$('body').videoBG({
+					mp4: videoFile,
+					ogv: videoFile,
+					webm: videoFile,
+					poster: posterFile,
+					opacity: 1.0,
+					autoplay: true,
+					scale: false,
+					width: '100%',
+					height:'100%'
+				});
+			}
+
+			function videoFileFromPosition(position) {
+				return "/videos/" + videoFiles[randomInt]['file'] + ".mp4";
+			}
+
+			function videoTitleFromPosition(position) {
+				return "/videos/" + videoFiles[randomInt]['title'] + ".mp4";
+			}
+
+			function posterFileFromPosition(position) {
+				return "/videos/" + videoFiles[randomInt]['file'] + ".jpg";
+			}
+
+			function nextVideo(position) {
+				var nextPosition = position++;
+				if(nextPosition >= videoFiles.length)
+					nextPosition = videoFiles.length - 1;
+
+				playVideoWithPosition(nextPosition);
+			}
+
+			function previousVideo(position) {
+				var prevPosition = position++;
+				if(prevPosition < 0)
+					prevPosition = 0;
+
+				playVideoWithPosition(prevPosition);
+			}
+
+			$(document).ready({
+				var videoFiles = [
+					{"file": "spencer-sleeping-la", "title": "Sleeping in LA" },
+					{"file": "spencer-sleeping-santa-monica", "title": "Sleeping in Santa Monica" },
+					{"file": "sleeping-mv-08-20-2012", "title": "Sleeping in Mountain View"},
+					{"file": "sleeping-vegas-08-19-2012", "title": "Sleeping in Vegas on Aug. 20 2012"},
+					{"file": "sleeping-vegas-desert-08-19-2012", "title": "Sleeping to the Desert on Aug. 20 2012"},
+				];
+				
+				var randomInt = Math.floor((Math.random()*videoFiles.length));
+				playVideoWithPosition(randomInt);
+			});
 		</script>
 	</body>
 </html>
