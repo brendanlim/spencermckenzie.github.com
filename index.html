@@ -24,13 +24,12 @@
 		div#subtitle {
 			font-size: 1.0em;
 			font-weight: 200;
-			width: 100%;
 			text-align:center;
 			color: #fff;
 			text-shadow: 1px 1px 8px #000;
 			position: absolute;
 			bottom: 20px;
-			left: 20px;
+			width: 100%;
 			z-index: 1000;
 		}
 	</style>
@@ -75,7 +74,7 @@
 				if($("div#subtitle").length)
 					$("div#subtitle").remove();
 
-				$("body").prepend("<div id='title'></div>").append("<div id='subtitle'>&larr; Previous / &rarr; Next</div>");
+				$("body").prepend("<div id='title'></div>").append("<div id='subtitle'>&larr; Previous &nbsp;&nbsp; | &nbsp;&nbsp; Next &rarr;</div>");
 
 				$("div#title").html(title);
 				$('body').videoBG({
@@ -92,7 +91,7 @@
 			}
 
 			function videoFileFromPosition(position) {
-				return "/videos/" + videoFiles[position]['file'] + ".mp4";
+				return "videos/" + videoFiles[position]['file'] + ".mp4";
 			}
 
 			function videoTitleFromPosition(position) {
@@ -100,7 +99,7 @@
 			}
 
 			function posterFileFromPosition(position) {
-				return "/videos/" + videoFiles[position]['file'] + ".jpg";
+				return "videos/" + videoFiles[position]['file'] + ".jpg";
 			}
 
 			function nextVideo(position) {
