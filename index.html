@@ -32,8 +32,26 @@
 			width: 100%;
 			z-index: 1000;
 		}
+
+		div#meta {
+			font-size: 1.0em;
+			font-weight: bold;
+			text-align: right;
+			color: #fff;
+			text-shadow: 1px 1px 8px #000;
+			position: absolute;
+			top: 30px;
+			right: 20px;
+			width: 100%;
+			z-index: 1000;
+		}
 	</style>
 	<body>
+		<div id='meta'>
+			<div class='sleeping'>Spencer McKenzie has been sleeping for <span id='time'>1</span>s</div>
+		</div>
+		<div id='video' style='width:100%;height:100%;'></div>
+
 		<script type='text/javascript'>
 			var videoFiles = [
 				{"file": "spencer-sleeping-la", "title": "Sleeping in LA" },
@@ -43,16 +61,15 @@
 				{"file": "sleeping-vegas-desert-08-19-2012", "title": "Sleeping in the Vegas Desert"},
 			];
 
+			var t = 1;
 			var globalPosition = Math.floor((Math.random()*videoFiles.length));
 
 			$(document).keydown(function(e){
 			    if (e.keyCode == 37) { // left
 			       	previousVideo(globalPosition);
-			    	e.stop();
 			       	return false;
 			    } else if (e.keyCode == 39) {
 			    	nextVideo(globalPosition);
-			    	e.stop();
 			    	return false;
 			    }
 			});
@@ -77,7 +94,7 @@
 				$("body").prepend("<div id='title'></div>").append("<div id='subtitle'>&larr; Previous &nbsp;&nbsp; | &nbsp;&nbsp; Next &rarr;</div>");
 
 				$("div#title").html(title);
-				$('body').videoBG({
+				$('div#video').videoBG({
 					mp4: videoFile,
 					ogv: videoFile,
 					webm: videoFile,
@@ -122,6 +139,12 @@
 
 			$(document).ready(function() {
 				playVideoWithPosition(globalPosition);
+
+				setInterval(function(){
+					t += 1;
+					$('span#time').html(t);
+				}, 1000);
+
 			});
 		</script>
 	</body>
