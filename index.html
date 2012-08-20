@@ -35,12 +35,12 @@
 
 			$(document).keydown(function(e){
 			    if (e.keyCode == 37) { // left
-			    	e.stop();
 			       	previousVideo(globalPosition);
+			    	e.stop();
 			       	return false;
 			    } else if (e.keyCode == 39) {
-			    	e.stop();
 			    	nextVideo(globalPosition);
+			    	e.stop();
 			    	return false;
 			    }
 			});
