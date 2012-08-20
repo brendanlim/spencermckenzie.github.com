@@ -35,11 +35,11 @@
 
 			$(document).keydown(function(e){
 			    if (e.keyCode == 37) { // left
-			    	console.log("left");
+			    	e.stop();
 			       	previousVideo(globalPosition);
 			       	return false;
 			    } else if (e.keyCode == 39) {
-			    	console.log("right");
+			    	e.stop();
 			    	nextVideo(globalPosition);
 			    	return false;
 			    }
@@ -92,10 +92,6 @@
 				if(nextPosition >= videoFiles.length)
 					nextPosition = 0;
 
-				console.log("nextVideo");
-				console.log(position);
-				console.log(nextPosition);
-
 				globalPosition = nextPosition;
 				playVideoWithPosition(nextPosition);
 			}
@@ -104,10 +100,6 @@
 				var prevPosition = position -= 1;
 				if(prevPosition < 0)
 					prevPosition = videoFiles.length - 1;
-
-				console.log("previousVideo");
-				console.log(position);
-				console.log(prevPosition);
 
 				globalPosition = prevPosition;
 				playVideoWithPosition(prevPosition);
