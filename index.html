@@ -28,13 +28,15 @@
 			var videoFiles = [
 				{"file": "spencer-sleeping-la", "title": "Sleeping in LA" },
 				{"file": "spencer-sleeping-santa-monica", "title": "Sleeping in Santa Monica" },
-				{"file": "sleeping-mv-08-20-2012", "title": "Sleeping in Mountain View on Aug. 20 2012"},
+				{"file": "sleeping-mv-08-20-2012", "title": "Sleeping in Mountain View"},
 				{"file": "sleeping-vegas-08-19-2012", "title": "Sleeping in Vegas on Aug. 20 2012"},
 				{"file": "sleeping-vegas-desert-08-19-2012", "title": "Sleeping to the Desert on Aug. 20 2012"},
 			];
+			
 			var randomInt = Math.floor((Math.random()*videoFiles.length));
-			var title = videoFiles[randomInt]['title'];
-			var fileName = videoFiles[randomInt]['file'];
+			var videoItem = videoFiles[randomInt];
+			var title = videoItem['title'];
+			var fileName = videoItem['file'];
 			var videoFile = "/videos/" + fileName + ".mp4";
 			var posterFile = "/videos/" + fileName + ".jpg";
 
