@@ -90,6 +90,8 @@
 				if(nextPosition >= videoFiles.length)
 					nextPosition = videoFiles.length - 1;
 
+				console.log(position);
+				console.log(nextPosition);
 				playVideoWithPosition(nextPosition);
 			}
 
@@ -98,6 +100,8 @@
 				if(prevPosition < 0)
 					prevPosition = 0;
 
+				console.log(position);
+				console.log(prevPosition);
 				playVideoWithPosition(prevPosition);
 			}
 
