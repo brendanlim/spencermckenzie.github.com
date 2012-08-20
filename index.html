@@ -34,6 +34,8 @@
 				{"file": "sleeping-vegas-desert-08-19-2012", "title": "Sleeping to the Desert on Aug. 20 2012"},
 			];
 
+			var randomInt = Math.floor((Math.random()*videoFiles.length));
+
 			$(document).keydown(function(e){
 			    if (e.keyCode == 37) { // left
 			       	previousVideo(randomInt);
@@ -92,7 +94,6 @@
 			}
 
 			$(document).ready(function() {
-				var randomInt = Math.floor((Math.random()*videoFiles.length));
 				playVideoWithPosition(randomInt);
 			});
 		</script>
