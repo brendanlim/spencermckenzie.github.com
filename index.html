@@ -21,10 +21,7 @@
 		}
 	</style>
 
-	<body style='margin: 0px;'>
-		<div id='video-back' style='width: 100%; height: 100%;'></div>
-		<div id='title'></div>
-
+	<body>
 		<script type='text/javascript'>
 			var videoFiles = [
 				{"file": "spencer-sleeping-la", "title": "Sleeping in LA" },
@@ -50,6 +47,14 @@
 				var title = videoTitleFromPosition(position);
 				var videoFile = videoFileFromPosition(position);
 				var posterFile = posterFileFromPosition(position);
+
+				if($("videoBG_wrapper").length)
+					$("videoBG_wrapper").remove();
+
+				if($("div#title").length)
+					$("div#title").remove();
+
+				$("body").prepend("<div id='title'></div>");
 
 				$("div#title").html(title);
 				$('body').videoBG({
