@@ -76,15 +76,15 @@
 			}
 
 			function videoFileFromPosition(position) {
-				return "/videos/" + videoFiles[randomInt]['file'] + ".mp4";
+				return "/videos/" + videoFiles[position]['file'] + ".mp4";
 			}
 
 			function videoTitleFromPosition(position) {
-				return videoFiles[randomInt]['title'];
+				return videoFiles[position]['title'];
 			}
 
 			function posterFileFromPosition(position) {
-				return "/videos/" + videoFiles[randomInt]['file'] + ".jpg";
+				return "/videos/" + videoFiles[position]['file'] + ".jpg";
 			}
 
 			function nextVideo(position) {
@@ -108,7 +108,7 @@
 				console.log("previousVideo");
 				console.log(position);
 				console.log(prevPosition);
-				
+
 				globalPosition = prevPosition;
 				playVideoWithPosition(prevPosition);
 			}
