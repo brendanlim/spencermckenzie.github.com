@@ -2,24 +2,39 @@
 	<head>
 		<script type="text/javascript" src="http://syddev.com/jquery.videoBG/assets/jquery-1.5.1.js"></script>
 		<script type="text/javascript" src="jquery.videoBG.js"></script>
-
 	</head>
+	<style type="text/css">
+		body {
+			font-family: "Helvetica, Arial";
+			margin: 0px;
+		}
+
+		div#title {
+			font-size: 3.0em;
+			color: #fff;
+			text-shadow: 1px 1px 4px #000;
+			position: absolute;
+			top: 20px;
+			left: 20px;
+		}
+	</style>
+
 	<body style='margin: 0px;'>
 		<div id='video-back' style='width: 100%; height: 100%;'></div>
-
+		<div class='title'></div>
 		<script type='text/javascript'>
 			var videoFiles = [
-				"spencer-sleeping-la",
-				"spencer-sleeping-santa-monica"
+				{"file": "spencer-sleeping-la", "title": "Sleeping in LA" },
+				{"file": "spencer-sleeping-santa-monica", "title": "Sleeping in Santa Monica" },
+				{"file": "sleeping-mv-08-20-2012", "title": "Sleeping in Mountain View on Aug. 20 2012"},
+				{"file": "sleeping-vegas-08-19-2012", "title": "Sleeping in Vegas on Aug. 20 2012"},
+				{"file": "sleeping-vegas-desert-08-19-2012", "title": "Sleeping to the Desert on Aug. 20 2012"},
 			];
 			var randomInt = Math.floor((Math.random()*videoFiles.length));
-			var fileName = videoFiles[randomInt];
+			var title = videoFiles[randomInt]['title'];
+			var fileName = videoFiles[randomInt]['file'];
 			var videoFile = "/videos/" + fileName + ".mp4";
 			var posterFile = "/videos/" + fileName + ".jpg";
-			
-			// console.log(videoFile)
-			// console.log(fileName);
-			// console.log(posterFile);
 
 			$('body').videoBG({
 				mp4: videoFile,
@@ -32,6 +47,8 @@
 				width: '100%',
 				height:'100%'
 			});
+
+			#("div#title").html(title);
 		</script>
 	</body>
 </html>
