@@ -31,14 +31,16 @@
 				{"file": "sleeping-vegas-desert-08-19-2012", "title": "Sleeping in the Vegas Desert"},
 			];
 
-			var randomInt = Math.floor((Math.random()*videoFiles.length));
+			var globalPosition = Math.floor((Math.random()*videoFiles.length));
 
 			$(document).keydown(function(e){
 			    if (e.keyCode == 37) { // left
-			       	previousVideo(randomInt);
+			    	console.log("left");
+			       	previousVideo(globalPosition);
 			       	return false;
 			    } else if (e.keyCode == 39) {
-			    	nextVideo(randomInt);
+			    	console.log("right");
+			    	nextVideo(globalPosition);
 			    	return false;
 			    }
 			});
@@ -90,8 +92,11 @@
 				if(nextPosition >= videoFiles.length)
 					nextPosition = 0;
 
+				console.log("nextVideo");
 				console.log(position);
 				console.log(nextPosition);
+
+				globalPosition = nextPosition;
 				playVideoWithPosition(nextPosition);
 			}
 
@@ -100,13 +105,16 @@
 				if(prevPosition < 0)
 					prevPosition = videoFiles.length - 1;
 
+				console.log("previousVideo");
 				console.log(position);
 				console.log(prevPosition);
+				
+				globalPosition = prevPosition;
 				playVideoWithPosition(prevPosition);
 			}
 
 			$(document).ready(function() {
-				playVideoWithPosition(randomInt);
+				playVideoWithPosition(globalPosition);
 			});
 		</script>
 	</body>
