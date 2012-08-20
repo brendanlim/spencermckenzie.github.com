@@ -26,6 +26,14 @@
 		<div id='title'></div>
 
 		<script type='text/javascript'>
+			var videoFiles = [
+				{"file": "spencer-sleeping-la", "title": "Sleeping in LA" },
+				{"file": "spencer-sleeping-santa-monica", "title": "Sleeping in Santa Monica" },
+				{"file": "sleeping-mv-08-20-2012", "title": "Sleeping in Mountain View"},
+				{"file": "sleeping-vegas-08-19-2012", "title": "Sleeping in Vegas on Aug. 20 2012"},
+				{"file": "sleeping-vegas-desert-08-19-2012", "title": "Sleeping to the Desert on Aug. 20 2012"},
+			];
+
 			$(document).keydown(function(e){
 			    if (e.keyCode == 37) { // left
 			       	previousVideo(randomInt);
@@ -84,14 +92,6 @@
 			}
 
 			$(document).ready(function() {
-				var videoFiles = [
-					{"file": "spencer-sleeping-la", "title": "Sleeping in LA" },
-					{"file": "spencer-sleeping-santa-monica", "title": "Sleeping in Santa Monica" },
-					{"file": "sleeping-mv-08-20-2012", "title": "Sleeping in Mountain View"},
-					{"file": "sleeping-vegas-08-19-2012", "title": "Sleeping in Vegas on Aug. 20 2012"},
-					{"file": "sleeping-vegas-desert-08-19-2012", "title": "Sleeping to the Desert on Aug. 20 2012"},
-				];
-				
 				var randomInt = Math.floor((Math.random()*videoFiles.length));
 				playVideoWithPosition(randomInt);
 			});
