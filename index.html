@@ -48,8 +48,11 @@
 				var videoFile = videoFileFromPosition(position);
 				var posterFile = posterFileFromPosition(position);
 
-				if($("videoBG_wrapper").length)
-					$("videoBG_wrapper").remove();
+				if($("div.videoBG_wrapper").length)
+					$("div.videoBG_wrapper").remove();
+
+				if($("div.videoBG").length)
+					$("div.videoBG").remove();
 
 				if($("div#title").length)
 					$("div#title").remove();
