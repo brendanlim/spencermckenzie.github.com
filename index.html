@@ -78,7 +78,7 @@
 			}
 
 			function nextVideo(position) {
-				var nextPosition = position++;
+				var nextPosition = position += 1;
 				if(nextPosition >= videoFiles.length)
 					nextPosition = videoFiles.length - 1;
 
@@ -86,7 +86,7 @@
 			}
 
 			function previousVideo(position) {
-				var prevPosition = position++;
+				var prevPosition = position -= 1;
 				if(prevPosition < 0)
 					prevPosition = 0;
 
