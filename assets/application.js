@@ -21,7 +21,6 @@ function playVideoWithPosition(position) {
 		$("div.video-background").remove();
 
 	$("div#title").html(title);
-
 	$('body').append("<div class='video-background'></div>");
 
 	$('.video-background').videobackground({
