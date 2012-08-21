@@ -1,6 +1,6 @@
 <html>
 	<head>
-		<script type="text/javascript" src="http://syddev.com/jquery.videoBG/assets/jquery-1.5.1.js"></script>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 		<script type="text/javascript" src="jquery.videoBG.js"></script>
 	</head>
 	<title>Spencer Sleeping</title>
@@ -40,10 +40,15 @@
 			color: #fff;
 			text-shadow: 1px 1px 2px #000;
 			position: absolute;
-			top: 20px;
-			right: 20px;
+			top: 18px;
+			right: 0px;
 			width: 100%;
 			z-index: 1000;
+		}
+
+		div#meta div.text {
+			display: inline-block;
+			vertical-align: top;
 		}
 
 		div#header {
@@ -60,11 +65,16 @@
 		<div id='header'>
 			<div id='title'></div>
 			<div id='meta'>
-				<div class='sleeping'>Spencer McKenzie has been sleeping for <span id='time'>1</span>s</div>
+				<div class='sleeping'>
+					<div class='text'>Spencer has been sleeping for <span id='time'>1</span>s</div> &nbsp;
+					<a href="https://twitter.com/share" class="twitter-share-button" data-via="twitterapi" data-lang="en"></a>
+				</div>
 			</div>
 		</div>
 
 		<div id='video' style='width:100%;height:100%;'></div> 
+
+		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 
 		<script type='text/javascript'>
 			var videoFiles = [
@@ -102,7 +112,7 @@
 				if($("div#subtitle").length)
 					$("div#subtitle").remove();
 
-				$("body").append("<div id='subtitle'>&larr; Previous &nbsp;&nbsp; | &nbsp;&nbsp; Next &rarr;</div>");
+				$("body").append("<div id='subtitle'><strong>&larr;</strong> Previous &nbsp;&nbsp;  &nbsp;&nbsp; Next <strong>&rarr;</strong></div>");
 
 				$("div#title").html(title);
 				$('div#video').videoBG({
