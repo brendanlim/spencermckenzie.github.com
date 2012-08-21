@@ -82,7 +82,6 @@ $(document).ready(function() {
 		$('span#time').html(t);
 
 		var meta = $("div.sleep-time").html();
-		$(document).attr('title', meta);
 	}, 1000);
 
 	$('span.next').live('click', function(){
