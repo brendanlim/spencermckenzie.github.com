@@ -17,20 +17,23 @@ function playVideoWithPosition(position) {
 	if($("div.videoBG_wrapper").length)
 		$("div.videoBG_wrapper").remove();
 
-	if($("div.videoBG").length)
-		$("div.videoBG").remove();
+	if($("div.video-background").length)
+		$("div.video-background").remove();
 
 	$("div#title").html(title);
-	$('div#video').videoBG({
-		mp4: videoFile + ".mp4",
-		ogv: videoFile + ".ogv",
-		webm: videoFile + ".webm",
+
+	$('body').append("<div class='video-background'></div>");
+
+	$('.video-background').videobackground({
+		videoSource: [
+				[videoFile + '.mp4', 'video/mp4'],
+				[videoFile + '.webm', 'video/webm'], 
+				[videoFile + '.ogv', 'video/ogg']
+			], 
 		poster: posterFile,
-		opacity: 1.0,
-		autoplay: true,
-		scale: false,
-		width: '100%',
-		height:'100%'
+		endedCallback: function() {
+			nextVideo(globalPosition);
+		}
 	});
 }
 
