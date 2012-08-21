@@ -1,0 +1,58 @@
+body {
+	font-family: "Helvetica Neue";
+	margin: 0px;
+}
+
+div#title {
+	font-size: 1.8em;
+	font-weight: 200;
+	color: #fff;
+	text-shadow: 1px 1px 2px #000;
+	position: absolute;
+	top: 10px;
+	left: 20px;
+	z-index: 1000;
+}
+
+div#footer {
+	font-size: 0.8em;
+	text-align:center;
+	color: #fff;
+	text-shadow: 1px 1px 2px #000;
+	position: absolute;
+	bottom: 20px;
+	width: 100%;
+	z-index: 1000;
+}
+
+div#meta {
+	font-size: 1.0em;
+	font-weight: bold;
+	text-align: right;
+	color: #fff;
+	text-shadow: 1px 1px 2px #000;
+	position: absolute;
+	top: 18px;
+	right: 0px;
+	width: 100%;
+	z-index: 1000;
+}
+
+div#meta div.sleep-time {
+	display: inline-block;
+	vertical-align: top;
+}
+
+div#header {
+	background: rgba(0,0,0,0.3);
+	height: 60px;
+	z-index: 1000;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+}
+
+span.next, span.previous {
+	cursor: pointer;
+}

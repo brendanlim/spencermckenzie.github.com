@@ -1,172 +1,27 @@
 <html>
 	<head>
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-		<script type="text/javascript" src="jquery.videoBG.js"></script>
+		<script type="text/javascript" src="assets/application.js"></script>
+		<script type="text/javascript" src="assets/jquery.videoBG.js"></script>
+		<link rel="stylesheet" type="text/css" href="assets/application.css"/>
 	</head>
-	<title>Spencer Sleeping</title>
-	<style type="text/css">
-		body {
-			font-family: "Helvetica Neue";
-			margin: 0px;
-		}
-
-		div#title {
-			font-size: 1.8em;
-			font-weight: 200;
-			color: #fff;
-			text-shadow: 1px 1px 2px #000;
-			position: absolute;
-			top: 10px;
-			left: 20px;
-			z-index: 1000;
-		}
-
-		div#subtitle {
-			font-size: 1.0em;
-			font-weight: 200;
-			text-align:center;
-			color: #fff;
-			text-shadow: 1px 1px 2px #000;
-			position: absolute;
-			bottom: 20px;
-			width: 100%;
-			z-index: 1000;
-		}
-
-		div#meta {
-			font-size: 1.0em;
-			font-weight: bold;
-			text-align: right;
-			color: #fff;
-			text-shadow: 1px 1px 2px #000;
-			position: absolute;
-			top: 18px;
-			right: 0px;
-			width: 100%;
-			z-index: 1000;
-		}
-
-		div#meta div.text {
-			display: inline-block;
-			vertical-align: top;
-		}
-
-		div#header {
-			background: rgba(0,0,0,0.3);
-			height: 60px;
-			z-index: 1000;
-			position: absolute;
-			top: 0px;
-			left: 0px;
-			width: 100%;
-		}
-	</style>
+	<title>Sleepy Spencer - Spencer sleeps. Friend records. Friend makes website. Probably no longer a friend.</title>
 	<body>
 		<div id='header'>
 			<div id='title'></div>
 			<div id='meta'>
-				<div class='sleeping'>
-					<div class='text'>Spencer has been sleeping for <span id='time'>1</span>s</div> &nbsp;
-					<a href="https://twitter.com/share" class="twitter-share-button" data-via="twitterapi" data-lang="en"></a>
-				</div>
+				<div class='sleep-time'>Spencer has been sleeping for <span id='time'>1</span>s</div> &nbsp;
+				<a href="https://twitter.com/share" class="twitter-share-button" data-via="brendanlim" data-text="Guy sleeps. Friend records. Friend makes website. Probably no longer a friend. http://sleepyspencer.com" data-lang="en"></a>
 			</div>
+		</div>
+
+		<div id='footer'>
+			<span class='previous'><strong>&larr;</strong> Previous</span> &nbsp;&nbsp;  &nbsp;&nbsp; 
+			<span class='next'>Next <strong>&rarr;</strong></span>
 		</div>
 
 		<div id='video' style='width:100%;height:100%;'></div> 
 
 		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-
-		<script type='text/javascript'>
-			var videoFiles = [
-				{"file": "spencer-sleeping-la", "title": "Sleeping in LA" },
-				{"file": "spencer-sleeping-santa-monica", "title": "Sleeping in Santa Monica" },
-				{"file": "sleeping-mv-08-20-2012", "title": "Sleeping in Mountain View"},
-				{"file": "sleeping-vegas-08-19-2012", "title": "Sleeping in Vegas"},
-				{"file": "sleeping-vegas-desert-08-19-2012", "title": "Sleeping in the Vegas Desert"},
-			];
-
-			var t = 1;
-			var globalPosition = Math.floor((Math.random()*videoFiles.length));
-
-			$(document).keydown(function(e){
-			    if (e.keyCode == 37) { // left
-			       	previousVideo(globalPosition);
-			       	return false;
-			    } else if (e.keyCode == 39) {
-			    	nextVideo(globalPosition);
-			    	return false;
-			    }
-			});
-
-			function playVideoWithPosition(position) {
-				var title = videoTitleFromPosition(position);
-				var videoFile = videoFileFromPosition(position);
-				var posterFile = posterFileFromPosition(position);
-
-				if($("div.videoBG_wrapper").length)
-					$("div.videoBG_wrapper").remove();
-
-				if($("div.videoBG").length)
-					$("div.videoBG").remove();
-
-				if($("div#subtitle").length)
-					$("div#subtitle").remove();
-
-				$("body").append("<div id='subtitle'><strong>&larr;</strong> Previous &nbsp;&nbsp;  &nbsp;&nbsp; Next <strong>&rarr;</strong></div>");
-
-				$("div#title").html(title);
-				$('div#video').videoBG({
-					mp4: videoFile + ".mp4",
-					ogv: videoFile + ".ogv",
-					webm: videoFile + ".webm",
-					poster: posterFile,
-					opacity: 1.0,
-					autoplay: true,
-					scale: false,
-					width: '100%',
-					height:'100%'
-				});
-			}
-
-			function videoFileFromPosition(position) {
-				return "videos/" + videoFiles[position]['file'];
-			}
-
-			function videoTitleFromPosition(position) {
-				return videoFiles[position]['title'];
-			}
-
-			function posterFileFromPosition(position) {
-				return "videos/" + videoFiles[position]['file'] + ".jpg";
-			}
-
-			function nextVideo(position) {
-				var nextPosition = position += 1;
-				if(nextPosition >= videoFiles.length)
-					nextPosition = 0;
-
-				globalPosition = nextPosition;
-				playVideoWithPosition(nextPosition);
-			}
-
-			function previousVideo(position) {
-				var prevPosition = position -= 1;
-				if(prevPosition < 0)
-					prevPosition = videoFiles.length - 1;
-
-				globalPosition = prevPosition;
-				playVideoWithPosition(prevPosition);
-			}
-
-			$(document).ready(function() {
-				playVideoWithPosition(globalPosition);
-
-				setInterval(function(){
-					t += 1;
-					$('span#time').html(t);
-				}, 1000);
-
-			});
-		</script>
 	</body>
 </html>
