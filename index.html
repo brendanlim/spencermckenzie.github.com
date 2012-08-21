@@ -95,9 +95,9 @@
 
 				$("div#title").html(title);
 				$('div#video').videoBG({
-					mp4: videoFile,
-					ogv: videoFile,
-					webm: videoFile,
+					mp4: videoFile + ".mp4",
+					ogv: videoFile + ".ogv",
+					webm: videoFile + ".webm",
 					poster: posterFile,
 					opacity: 1.0,
 					autoplay: true,
@@ -108,7 +108,7 @@
 			}
 
 			function videoFileFromPosition(position) {
-				return "videos/" + videoFiles[position]['file'] + ".mp4";
+				return "videos/" + videoFiles[position]['file'];
 			}
 
 			function videoTitleFromPosition(position) {
