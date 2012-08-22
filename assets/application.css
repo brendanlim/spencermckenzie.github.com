@@ -77,3 +77,7 @@ div#video {
 	min-height: 100%; 
 	min-width:100%; 
 }
+
+div.fb-like {
+	vertical-align: top;
+}
