@@ -94,4 +94,7 @@ a.gumroad-button {
 	vertical-align: top;
 	padding: 2px 5px 3px 26px !important;
 	font-size: 11px !important;
+	font-weight: bold !important;
+	color: #333 !important;
+	border: 0px !important;
 }
